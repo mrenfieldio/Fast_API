@@ -1,0 +1,19 @@
+name: My First CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check Python version
+        run: python --version
+
+      - name: Display success message
+        run: echo "My GitHub Actions workflow works!"

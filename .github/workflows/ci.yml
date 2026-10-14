@@ -29,3 +29,17 @@ jobs:
 
       - name: Run automated tests
         run: python -m pytest -v
+  
+  docker-build:
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build FastAPI image
+        run: docker build -t learnfastapi-api ./backend
+
+      - name: Build React frontend image
+        run: docker build -t learnfastapi-frontend ./frontend/Kottupallil
